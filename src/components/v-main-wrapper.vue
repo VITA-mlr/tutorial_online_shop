@@ -4,6 +4,7 @@
         <v-cart 
             v-if="CART.length"
             :cart_data="CART"
+            :deleteFromCart="CART"
         />
     </div>
 </template>
