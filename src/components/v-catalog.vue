@@ -6,14 +6,14 @@
                 v-for="product in PRODUCTS"
                 :key="product.article"
                 :product_data="product"
-                @sendDataToParent="showChildArticleInConsole"
+                @addToCart="addToCart"
             />
         </div>
     </div>
 </template>
 
 <script>
-    import vCatalogItem from './v-catlog-item'
+    import vCatalogItem from './v-catalog-item'
     import {mapActions, mapGetters} from 'vuex'
 
     export default {
@@ -28,15 +28,17 @@
         },
         computed: {
             ...mapGetters([
-                'PRODUCTS'
+                'PRODUCTS',
+                'CART'                
             ])
         },
         methods: {
             ...mapActions([
-                'GET_PRODUCTS_FROM_API'
+                'GET_PRODUCTS_FROM_API',
+                'ADD_TO_CART'
             ]),
-            showChildArticleInConsole(data) {
-                console.log(data)
+            addToCart(data) {
+                this.ADD_TO_CART(data);
             }
         },
         mounted() {
