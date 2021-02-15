@@ -13,8 +13,19 @@ let store = new Vuex.Store( {
         SET_PRODUCTS_TO_STATE: (state, products) => {
             state.products = products;
         },
-        SET_TO_CART: (state, product) => {            
-            state.cart = [...state.cart, product];           
+        SET_TO_CART: (state, product) => {   
+            if (state.cart.length) {
+                let my_flag = false;
+                state.cart.map(function(item) {
+                    if (item.article === product.article) {                        
+                        my_flag = true;
+                        item.quantity++;
+                    }                    
+                })
+                if (!my_flag) state.cart = [...state.cart, product];
+            } else {
+                state.cart = [...state.cart, product]; 
+            }          
         },
         REMOVE_FROM_CART: (state, index) => {
             state.cart.splice(index, 1);
