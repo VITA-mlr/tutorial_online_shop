@@ -30,7 +30,6 @@ export default {
     },
     mounted() {
        this.$set(this.cart_item_data, 'quantity', 1);
-    //    console.log('cart_item_data.quantity: ', this.cart_item_data);
     },
     methods: {
         deleteFromCart() {
