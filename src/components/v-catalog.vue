@@ -23,7 +23,7 @@
     export default {
         name: 'v-catalog',
         components: {
-            vCatalogItem,
+            vCatalogItem
         },
         props: {},
         data() {
